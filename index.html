@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Artur</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.js">
+</head>
+<body>
+    <header>
+        <h1 data-translate="title">Ремонт газовых колонок в Тбилиси</h1>
+        <button id="menu-toggle">☰</button>
+        <div id="language-switcher">
+            <button data-lang="ru">Русский</button> 
+            <button data-lang="en">English</button>
+            <button data-lang="geo">ქართული</button>
+        </div>    
+        <nav>
+            <ul>
+                <li><a href="#services" data-translate="services">Услуги</a></li>
+                <li><a href="#about" data-translate="about">О нас</a></li>
+                <li><a href="#contacts" data-translate="contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="services">
+        <h2 data-translate="services">Наши услуги</h2>
+        <p data-translate="description">Мы предлагаем профессиональные услуги по ремонту и обслуживанию газовых колонок.</p>
+        <ul>
+            <li data-translate="ser1">Диагностика газовых колонок</li>
+            <li data-translate="ser2">Ремонт газовых колонок</li>
+            <li data-translate="ser3">Установка и настройка</li>
+            <li data-translate="ser4">Обслуживание и профилактика</li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2 data-translate="about">О нас</h2>
+        <p data-translate="about1">Мы — команда опытных специалистов с многолетним опытом работы в сфере ремонта газового оборудования.</p>
+    </section>
+
+    <section id="contacts">
+        <h2 data-translate="contacts">Контакты</h2>
+        <p data-translate="con1">Свяжитесь с нами для записи на обслуживание или консультации.</p>
+        <form id="contact-form" action="https://formspree.io/f/xdkewqpv" method="POST">
+            <input type="text" name="Name" placeholder="Name" required>
+            <input type="tel" name="Phone" placeholder="Phone" required>
+            <textarea name="Message" placeholder="Message" required></textarea>
+            <button type="submit" data-translate="submit">Отправить</button>
+        </form>
+        <p>Phone: +995 (123) 456-78-90</p>
+        <p>Email: eliavadavid54@gmail.com</p>
+    </section>
+
+    <button id="scroll-to-top">↑</button>
+
+    <footer>
+        <p>&copy; 2025 Repair of gas water heaters. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+    const navUl = document.querySelector('nav ul');
+    navUl.classList.toggle('active'); // Переключаем класс active
+});
+
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Отменяем стандартное поведение
+        const targetId = this.getAttribute('href'); // Получаем ID раздела
+        const targetSection = document.querySelector(targetId); // Находим раздел
+        targetSection.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
+    });
+});
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    alert('Ваше сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+});
+
+const sections = document.querySelectorAll('section');
+
+const checkVisibility = () => {
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight * 0.8) {
+            section.classList.add('visible');
+        }
+    });
+};
+
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility);
+
+const scrollToTopButton = document.getElementById('scroll-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollToTopButton.classList.add('visible');
+    } else {
+        scrollToTopButton.classList.remove('visible');
+    }
+});
+
+scrollToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+const translations = {
+            ru: {
+                title: "Ремонт газовых колонок в Тбилиси",
+                services: "Наши услуги",
+                about: "О нас",
+                contacts: "Контакты",
+                description: "Мы предлагаем профессиональные услуги по ремонту и обслуживанию газовых колонок.",
+                submit: "Отправить",
+                ser1: "Диагностика газовых колонок",
+                ser2: "Ремонт газовых колонок",
+                ser3: "Установка и настройка",
+                ser4: "Обслуживание и профилактика",
+                about1: "Мы — команда опытных специалистов с многолетним опытом работы в сфере ремонта газового оборудования.",
+                con1: "Свяжитесь с нами для записи на обслуживание или консультации.",
+            },
+            en: {
+                title: "Gas Column Repair in Tbilisi",
+                services: "Our Services",
+                about: "About Us",
+                contacts: "Contacts",
+                description: "We offer professional gas column repair and maintenance services.",
+                submit: "Submit",
+                ser1: "Diagnostics of gas water heaters",
+                ser2: "Repair of gas water heaters",
+                ser3: "Installation and configuration",
+                ser4: "Maintenance and prevention",
+                about1: "We are a team of experienced specialists with many years of experience in the field of gas equipment repair.",
+                con1: "Contact us to schedule a service or consultation.",
+                message1: ""
+            },
+            geo: {
+                title: "გაზის წყლის გამაცხელებლების შეკეთება თბილისში",
+                services: "ჩვენი სერვისები",
+                about: "ჩვენს შესახებ",
+                contacts: "კონტაქტები",
+                description: "ჩვენ გთავაზობთ პროფესიონალურ მომსახურებას გაზის წყლის გამაცხელებლების შეკეთებასა და მოვლაზე.",
+                submit: "გაგზავნა",
+                ser1: "გაზის წყლის გამაცხელებლების დიაგნოსტიკა",
+                ser2: "გაზის წყლის გამაცხელებლების შეკეთება",
+                ser3: "ინსტალაცია და კონფიგურაცია",
+                ser4: "მოვლა და პრევენცია",
+                about1: "ჩვენ ვართ გამოცდილი სპეციალისტების გუნდი გაზის აპარატურის შეკეთების სფეროში მრავალწლიანი გამოცდილებით.",
+                con1: "დაგვიკავშირდით სერვისის ან კონსულტაციის დასანიშნად."
+            },
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        document.querySelectorAll('#language-switcher button').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        changeLanguage('ru');
+    </script>
+</body>
+</html>
