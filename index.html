@@ -50,7 +50,7 @@
             <textarea name="Message" placeholder="Message" required></textarea>
             <button type="submit" data-translate="submit">Отправить</button>
         </form>
-        <p>Phone: +995 (123) 456-78-90</p>
+        <p>Phone: +995 539 471 772</p>
         <p>Email: eliavadavid54@gmail.com</p>
     </section>
 
@@ -62,15 +62,15 @@
     <script>
         document.getElementById('menu-toggle').addEventListener('click', function() {
     const navUl = document.querySelector('nav ul');
-    navUl.classList.toggle('active'); // Переключаем класс active
+    navUl.classList.toggle('active'); 
 });
 
 document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault(); // Отменяем стандартное поведение
-        const targetId = this.getAttribute('href'); // Получаем ID раздела
-        const targetSection = document.querySelector(targetId); // Находим раздел
-        targetSection.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
+        e.preventDefault(); 
+        const targetId = this.getAttribute('href'); 
+        const targetSection = document.querySelector(targetId); 
+        targetSection.scrollIntoView({ behavior: 'smooth' }); 
     });
 });
 
